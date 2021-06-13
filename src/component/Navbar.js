@@ -8,7 +8,11 @@ import SearchIcon from '@material-ui/icons/Search';
 import LanguageIcon from '@material-ui/icons/Language';
 import { Avatar, Button } from '@material-ui/core';
 import '../css/Navbar.css';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../features/userSlice';
 function Navbar() {
+
+  const user = useSelector(selectUser)
   return (
     <div className = "qHeader">
        <div className = "qHeader_logo">
@@ -43,7 +47,9 @@ function Navbar() {
      </div>
      <div className = "qHeader_Rem">
        <div className = "qHeader_avatar">
-         <Avatar/>
+         <Avatar
+         src ={user.photo}
+         />
        </div>
        <LanguageIcon />
        <Button>Add question</Button>
