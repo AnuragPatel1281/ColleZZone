@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
-import 'firebase/database'; // If using Firebase database
+import 'firebase/database'; 
 import 'firebase/storage'; 
 import Collezone from './component/Collezone';
 import { login, logout, selectUser } from './features/userSlice';
@@ -25,7 +25,8 @@ function App() {
             email: authUser.email
          }))
          console.log(authUser)
-       } else {
+       } 
+       else {
          dispatch(logout())
        }
 

@@ -7,39 +7,43 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const signIn = () => {
-    auth.signInWithPopup(provider).catch((e) => 
-      alert(e.message));
+  const signIn =() => {
 
-      console.log(auth);
+    auth.signInWithPopup(provider).catch((e) =>alert(e.message));
+
+    console.log(auth);
   };
 
-  const handleSignIn = (e) => {
-    e.preventDefault();
+  const handleLogin = (e) =>
+   {
 
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then((auth) => {
-        console.log(auth);
-      })
-      .catch((e) => alert(e.message));
-      setEmail("");
-      setPassword("");
+    e.preventDefault()
+    auth.signInWithEmailAndPassword(email,password)
+    .then((auth) => {
+      console.log(auth)
+    } ).catch((e)=>alert(e.message))
+
+    setEmail("")
+    setPassword("")
+
+      
   };
 
-  const registerSignIn = (e) => {
+  
+  const handleRegister = (e) => {
     e.preventDefault();
 
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((auth) => {
+    auth.createUserWithEmailAndPassword(email, password)
+    .then((auth) => {
         if (auth) {
           console.log(auth);
         }
       })
       .catch((e) => alert(e.message));
-      setEmail("");
-      setPassword("");
+       
+      setEmail("")
+      setPassword("")
+      
   };
   return (
     <div className="login">
@@ -61,7 +65,7 @@ function Login() {
                 src="https://media-public.canva.com/MADnBiAubGA/3/screen.svg"
                 alt=""
               />
-              <p onClick={signIn}>Continue With Google</p>
+              <p onClick ={signIn}>Continue With Google</p>
             </div>
             <div className="login__authOption">
               <img
@@ -113,9 +117,10 @@ function Login() {
             </div>
             <div className="login__forgButt">
               <small>Forgot Password?</small>
-              <button onClick={handleSignIn}>Login</button>
+              <button type = "submit" onClick = {handleLogin}>Login</button>
+              
             </div>
-            <button onClick={registerSignIn}>Register</button>
+            <button onClick={handleRegister}>Register</button>
           </div>
         </div>
         <div className="login__lang">
