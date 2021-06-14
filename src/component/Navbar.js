@@ -10,11 +10,30 @@ import { Avatar, Button } from '@material-ui/core';
 import '../css/Navbar.css';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../features/userSlice';
+import  {auth} from "../firebase";
+import { useEffect } from 'react';
 function Navbar() 
 {
   
+  console.log(auth)
+  useEffect(() =>
+  {
+    auth.onAuthStateChanged((authUser)=>{
+     
+       if(authUser){
+         
+         console.log(authUser)
+       } 
+       else {
+         
+       }
 
+    })
+
+    
+  } ,)
   const user = useSelector(selectUser)
+  const logouthandler =() =>  auth.signOut()
   return (
     <div className = "qHeader">
        <div className = "qHeader_logo">
@@ -49,7 +68,7 @@ function Navbar()
      </div>
      <div className = "qHeader_Rem">
        <div className = "qHeader_avatar">
-         <Avatar
+         <Avatar onClick ={logouthandler}
          src ={user.photo}
          />
        </div>

@@ -18,3 +18,4 @@ const firebaseConfig = {
 
   export {auth,provider}
   export default db
+  
