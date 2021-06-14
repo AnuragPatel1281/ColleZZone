@@ -7,10 +7,12 @@ import Collezone from './component/Collezone';
 import { login, logout, selectUser } from './features/userSlice';
 import Login from "./component/auth/Login";
 import { auth } from './firebase';
-function App() {
+function App() 
+{
 
   const user = useSelector(selectUser)
   const dispatch = useDispatch()
+  
 
   useEffect(() =>
   {
@@ -18,6 +20,7 @@ function App() {
      
        if(authUser){
          dispatch(
+
            login({
             uid : authUser.uid,
             photo : authUser.photoURL,

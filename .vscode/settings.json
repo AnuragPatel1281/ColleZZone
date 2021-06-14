@@ -12,6 +12,7 @@
         "firebaseapp",
         "firestore",
         "forg",
+        "logouthandler",
         "noopener",
         "noreferrer",
         "quora",

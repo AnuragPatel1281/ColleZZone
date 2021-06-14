@@ -10,7 +10,9 @@ import { Avatar, Button } from '@material-ui/core';
 import '../css/Navbar.css';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../features/userSlice';
-function Navbar() {
+function Navbar() 
+{
+  
 
   const user = useSelector(selectUser)
   return (
@@ -34,7 +36,7 @@ function Navbar() {
       <div className = "qHeader_icon">
           <PeopleAltOutlinedIcon/>
       </div>
-      <div className = "qHeader_icon">
+      <div  className = "qHeader_icon">
           <NotificationOutlinedIcon/>
       </div>
       <div className = "qHeader_icon">
