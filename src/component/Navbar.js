@@ -41,7 +41,7 @@ function Navbar()
   const logouthandler =() =>  auth.signOut()
   const [input,setInput] = useState("")
   const [inputUrl, setInputUrl] = useState("")
-  const questionName = input;
+  
   const handleQuestion =(e) => {
     e.preventDefault()
     
@@ -49,6 +49,7 @@ function Navbar()
     
     db.collection('questions').add({
     question: input,
+    imageUrl : inputUrl,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     user : user,
   })
