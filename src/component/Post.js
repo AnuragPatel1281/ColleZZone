@@ -4,26 +4,39 @@ import ArrowDownwardOutlinedICon from "@material-ui/icons/ArrowDownwardOutlined"
 import RepeatOutlinedIcon from "@material-ui/icons/RepeatOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import {  MoreHorizOutlined, ShareOutlined } from '@material-ui/icons'
-import React from 'react'
+import React, { useState } from 'react'
 import '../css/Post.css'
+import Modal from 'react-modal'
+function Post({id,question,image,timestamp,collezoneUser})
+ {
+   const[openModal,setOpenModal] = useState(false)
 
-function Post() {
   return (
     <div className = "post">
       <div className = "post_info">
-        <Avatar />
-        <h5>Username</h5>
-        <small>Timestamp</small>
+        <Avatar
+          src ={collezoneUser.photo}
+          
+        />
+        <h5>{collezoneUser.displayName ? collezoneUser.displayName : collezoneUser.email }</h5>
+        <small>{new Date(timestamp?.toDate()).toLocaleString()}</small>
       </div>
         
       <div className ="post_body">
         <div className="post_question">
-          <p>Question</p>
+        <p>{question}</p>
           <button className ="post_btnAnswer">
             Answer
           </button>
+             
+         
+
+
+    
+
+
         </div>
-        <img src= "https://economictimes.indiatimes.com/thumb/msid-62211697,width-1600,height-900,resizemode-4/tech/ites/mega-deal-for-tcs-cracks-record-2-25-billion-nielsen-outsourcing-contract.jpg"
+        <img src= {image} 
              alt=""/>
       </div>
       <div className ="post_footer">

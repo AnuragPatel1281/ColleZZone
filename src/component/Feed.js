@@ -15,7 +15,7 @@ function Feed() {
     setPosts(
       snapshot.docs.map((doc) => ({
         id: doc.id,
-        questions: doc.data(),
+        question: doc.data(),
       }))
     )
   );
@@ -24,14 +24,14 @@ function Feed() {
   return (
     <div className="feed">
       <CollezoneBox />    
-      {posts.map(({ id, questions }) => (
+      {posts.map(({ id, question }) => (
         <Post
           key={id}
           id={id}
-          image = {questions.imageUrl}
-          questions={questions.questions}
-          timestamp={questions.timestamp}
-          quoraUser={questions.user}
+          image = {question.imageUrl}
+          question={question.question}
+          timestamp={question.timestamp}
+          collezoneUser={question.user}
         />
       ))}
     </div>

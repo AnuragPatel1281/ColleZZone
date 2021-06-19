@@ -155,7 +155,9 @@ function Navbar()
             </div>
            </div>
             <div className ="modal__buttons">
-              <button className="cancle">Cancel</button>
+            <button className="cancle" onClick={() => setOpenModal(false)}>
+              Cancel
+            </button>
              <button  onClick = {handleQuestion} type ="submit" className="add">
               Add Question
             </button>
