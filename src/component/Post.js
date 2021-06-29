@@ -29,12 +29,7 @@ function Post({id,question,image,timestamp,collezoneUser})
             Answer
           </button>
              
-         
-
-
-    
-
-
+          
         </div>
         <img src= {image} 
              alt=""/>

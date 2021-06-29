@@ -62,7 +62,7 @@ function Navbar()
     <div className = "qHeader">
        <div className = "qHeader_logo">
        <img
-           src=""
+           src="logocollez.png"
            alt=""
       />
     </div>
