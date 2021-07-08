@@ -9,7 +9,7 @@ function Feed() {
 
   useEffect(() =>{
    
-    db.collection('questions')
+     db.collection('questions')
     .orderBy('timestamp',"desc")
     .onSnapshot((snapshot) =>
     setPosts(
