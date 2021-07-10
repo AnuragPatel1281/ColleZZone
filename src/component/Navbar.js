@@ -88,7 +88,7 @@ function Navbar()
     </div>
      <div className="qHeader_input">
        <SearchIcon/> 
-       <input type = "text" placeholder ="Search Coll3zone" />
+       <input type = "text" placeholder ="Search ColleZone" />
      </div>
      <div className = "qHeader_Rem">
        <div className = "qHeader_avatar">

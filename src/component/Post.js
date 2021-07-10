@@ -4,7 +4,7 @@ import ArrowDownwardOutlinedICon from "@material-ui/icons/ArrowDownwardOutlined"
 import RepeatOutlinedIcon from "@material-ui/icons/RepeatOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import {  MoreHorizOutlined, ShareOutlined } from '@material-ui/icons'
-import React, { useEffect, useState } from 'react'
+import React, {Fragment, useEffect, useState } from 'react'
 import '../css/Post.css'
 import "../css/Navbar.css";
 import Modal from 'react-modal'
@@ -31,29 +31,31 @@ function Post({id,question,image,timestamp,collezoneUser})
        .doc(questionId)
        .collection('answer')
        .orderBy('timestamp' , 'desc') 
-       .onSnapshot ((snapshot) => setGetAnswer
+       .onSnapshot ((snapshot) => 
+       setGetAnswer
        (
         snapshot.docs.map((doc) => ({ id: doc.id, answers: doc.data() }))
        )
         
           )
      }
-   },[questionId])
+   },[questionId]);
 
-   const handleAnswer = (e) => {
-   e.preventDefault()
+   const handleAnswer = (e) => 
+   {
+   e.preventDefault();
 
    if(questionId){
     db.collection('questions').doc(questionId).collection('answer').add({
-      answer : answer,
       user: user,
+      answer : answer,
       questionId:questionId,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     })
 
-    console.log(questionId,questionName)
-    setAnswer("")
-    setOpenModal(false)
+    console.log(questionId,questionName);
+    setAnswer("");
+    setOpenModal(false);
    }
 
    }
@@ -84,7 +86,7 @@ function Post({id,question,image,timestamp,collezoneUser})
           className ="post_btnAnswer">
             Answer
           </button>
-
+          </div>
         <Modal
          isOpen = {openModal}
          onRequestClose = {() => setOpenModal(false)}
@@ -111,9 +113,9 @@ function Post({id,question,image,timestamp,collezoneUser})
             </span> {" "}
             {""}
              on {" "}
-             <span className = "name">
+             {/* <span className = "name">
                {new Date(timestamp?.toDate().toLocaleString())}
-            </span>
+            </span> */}
             </p>
             </div>
             <div className = "modal__answer" >
@@ -136,17 +138,16 @@ function Post({id,question,image,timestamp,collezoneUser})
           </div> 
           </Modal> 
           <div className="post__answer">
-            {
-               
-               getAnswer.map (({id,answers})=>(
-                <p key = {id} style ={{position: "relative",paddingBottom: "5px"}}>
-                   {id === answers.questionId ? (
-                <span>
+          <p>
+          {getAnswer.map(({ idd, answers }) => (
+            <Fragment key={idd}>
+              {id === answers.questionId ? (
+                <div style={{  paddingBottom: "5px" }}>
                   {answers.answer}
                   <br />
                   <span
                     style={{
-                      position: "absolute",
+                      // position: "absolute",
                       color: "gray",
                       fontSize: "small",
                       display: "flex",
@@ -158,18 +159,18 @@ function Post({id,question,image,timestamp,collezoneUser})
                         ? answers.user.displayName
                         : answers.user.email}{" "}
                       on{" "}
-                      {new Date(answers.timestamp?.toDate()).toLocaleString()}
+                      {/* {new Date(answers.timestamp?.toDate()).toLocaleString()} */}
                     </span>
                   </span>
-                </span>
-              ) : (
-                ""
-              )}
-                </p>
-              ))
+                </div>
+              ): null
             }
+                </Fragment>
+          ))
+          }
+          </p>
           </div>
-        </div>
+        
         <img src= {image} 
              alt=""/>
       </div>
