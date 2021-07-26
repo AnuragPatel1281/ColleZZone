@@ -68,19 +68,19 @@ function Navbar()
     </div>
     <div className = "qHeader_icons">
       <div className = "qHeader_icon">
-          <HomeIcon />
+          
       </div>
       <div className = "qHeader_icon">
-          <FeaturedPlayListOutlinedIcon />
+          
       </div>
       <div className = "qHeader_icon">
-          <AssignmentTurnedInOutlinedIcon />
+        
       </div>
       <div className = "qHeader_icon">
-          <PeopleAltOutlinedIcon/>
+         
       </div>
       <div  className = "qHeader_icon">
-          <NotificationOutlinedIcon/>
+          
       </div>
       <div className = "qHeader_icon">
           
