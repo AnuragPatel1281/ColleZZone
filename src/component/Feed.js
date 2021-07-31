@@ -3,24 +3,7 @@ import "../css/Feed.css"
 import Post from './Post'
 import CollezoneBox from './CollezoneBox'
 import db from '../firebase'
-function Feed() {
-
-  const [posts,setPosts] = useState([])
-
-  useEffect(() =>{
-   
-     db.collection('questions')
-    .orderBy('timestamp',"desc")
-    .onSnapshot((snapshot) =>
-    setPosts(
-      snapshot.docs.map((doc) => ({
-        id: doc.id,
-        question: doc.data(),
-      }))
-    )
-  );
-   
-  },[])
+function Feed({posts}) {
   return (
     <div className="feed">
       <CollezoneBox />    
