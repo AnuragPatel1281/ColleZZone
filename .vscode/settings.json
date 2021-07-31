@@ -9,15 +9,19 @@
         "browserslist",
         "cancle",
         "collezone",
+        "dislikecount",
         "firebaseapp",
         "firestore",
         "forg",
+        "likecount",
         "logocollez",
         "logouthandler",
         "noopener",
         "noreferrer",
         "onlinelogomaker",
         "reduxjs",
-        "royalblue"
+        "royalblue",
+        "setdislikecount",
+        "setlikecount"
     ]
 }

@@ -17,9 +17,12 @@ import {
 } from "../features/questionSlice";
 import { selectUser } from "../features/userSlice";
 import firebase from "firebase";
+import IconButton from '@material-ui/core/IconButton';
+
 Modal.setAppElement("#root");
 
-function Post({ id, question, image, timestamp, collezoneUser }) {
+function Post({ id, question, image, timestamp, collezoneUser })
+ {
   const user = useSelector(selectUser);
   const [openModal, setOpenModal] = useState(false);
   const dispatch = useDispatch();
@@ -27,6 +30,30 @@ function Post({ id, question, image, timestamp, collezoneUser }) {
   const questionName = useSelector(selectQuestionName);
   const [answer, setAnswer] = useState("");
   const [getAnswer, setGetAnswer] = useState([]);
+  const [likecount,setlikecount] = useState(0);
+  const [dislikecount,setdislikecount] = useState(0);
+
+
+const likeHandler=()=>{
+  if (likecount===0){
+    setlikecount(1)
+    if (dislikecount==1)
+  {
+    setdislikecount(0)
+  }
+  }
+}
+
+const dislikeHandler=()=>{
+if (dislikecount===0){
+  setdislikecount(1)
+  if (likecount==1)
+  {
+    setlikecount(0)
+  }
+}
+}
+
 
   useEffect(() => {
     if (questionId) {
@@ -175,8 +202,16 @@ function Post({ id, question, image, timestamp, collezoneUser }) {
       </div>
       <div className="post_footer">
         <div className="post_footerAction">
-          <ArrowUpwardOutlinedIcon />
-          <ArrowDownwardOutlinedICon />
+        <IconButton onClick={likeHandler}><ArrowUpwardOutlinedIcon />   
+        {
+           likecount
+        }
+        </IconButton >
+        <IconButton   onClick={dislikeHandler}><ArrowDownwardOutlinedICon /> 
+        {
+         dislikecount
+        }
+        </IconButton >
         </div>
 
         
