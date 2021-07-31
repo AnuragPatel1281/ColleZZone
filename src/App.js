@@ -12,7 +12,7 @@ function App()
 
   
   const user = useSelector(selectUser)
-  console.log(user)
+ 
   const dispatch = useDispatch()
   
 
@@ -29,7 +29,7 @@ function App()
             displayName: authUser.displayName,
             email: authUser.email
          }))
-         console.log(authUser)
+         
        } 
        else {
          dispatch(logout())

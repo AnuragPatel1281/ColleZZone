@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import HomeIcon from '@material-ui/icons/Home';
-import FeaturedPlayListOutlinedIcon from '@material-ui/icons/FeaturedPlayListOutlined';
-import AssignmentTurnedInOutlinedIcon from '@material-ui/icons/AssignmentTurnedInOutlined';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
-import NotificationOutlinedIcon from '@material-ui/icons/NotificationsOutlined';
 import SearchIcon from '@material-ui/icons/Search';
 import LanguageIcon from '@material-ui/icons/Language';
 import { Avatar, Button, Input } from '@material-ui/core';
@@ -19,14 +15,14 @@ import firebase from 'firebase';
 function Navbar() 
 {
   
-  console.log(auth)
+  
   useEffect(() =>
   {
     auth.onAuthStateChanged((authUser)=>{
      
        if(authUser){
          
-         console.log(authUser)
+        
        } 
        else {
          

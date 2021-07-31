@@ -11,7 +11,7 @@ function Login() {
 
     auth.signInWithPopup(provider).catch((e) =>alert(e.message));
 
-    console.log(auth);
+    
   };
 
   const handleLogin = (e) =>
@@ -20,7 +20,7 @@ function Login() {
     e.preventDefault()
     auth.signInWithEmailAndPassword(email,password)
     .then((auth) => {
-      console.log(auth)
+      
     } ).catch((e)=>alert(e.message))
 
     setEmail("")
@@ -36,7 +36,7 @@ function Login() {
     auth.createUserWithEmailAndPassword(email, password)
     .then((auth) => {
         if (auth) {
-          console.log(auth);
+          
         }
       })
       .catch((e) => alert(e.message));

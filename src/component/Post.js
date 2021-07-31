@@ -80,7 +80,7 @@ if (dislikecount===0){
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       });
 
-      console.log(questionId, questionName);
+      
       setAnswer("");
       setOpenModal(false);
     }
