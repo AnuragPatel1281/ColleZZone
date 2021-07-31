@@ -6,7 +6,7 @@ import Feed from './Feed';
 import Widget from './Widget';
 import db from '../firebase'
 import {getPosts} from "./util"
-function collezone() {
+function Collezone() {
   const [posts,setPosts] = useState([])
 
   useEffect(() =>{
@@ -27,4 +27,4 @@ function collezone() {
   )
 }
 
-export default collezone;
+export default Collezone;
