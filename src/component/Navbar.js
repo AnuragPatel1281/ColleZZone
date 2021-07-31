@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import HomeIcon from '@material-ui/icons/Home';
+import FeaturedPlayListOutlinedIcon from '@material-ui/icons/FeaturedPlayListOutlined';
+import AssignmentTurnedInOutlinedIcon from '@material-ui/icons/AssignmentTurnedInOutlined';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
+import NotificationOutlinedIcon from '@material-ui/icons/NotificationsOutlined';
 import SearchIcon from '@material-ui/icons/Search';
 import LanguageIcon from '@material-ui/icons/Language';
 import { Avatar, Button, Input } from '@material-ui/core';
@@ -12,17 +16,16 @@ import Modal from 'react-modal'
 import LinkIcon from '@material-ui/icons/Link'
 import { ExpandMore} from '@material-ui/icons';
 import firebase from 'firebase';
-function Navbar() 
+import {getPosts} from "./util"
+function Navbar({posts,setPosts}) 
 {
-  
-  
+  const [inputValue,setInputValue] = useState("")
   useEffect(() =>
   {
     auth.onAuthStateChanged((authUser)=>{
      
        if(authUser){
          
-        
        } 
        else {
          
@@ -37,7 +40,16 @@ function Navbar()
   const logouthandler =() =>  auth.signOut()
   const [input,setInput] = useState("")
   const [inputUrl, setInputUrl] = useState("")
-  
+  const searchHandler=(e)=>{
+  e.preventDefault()
+  if(inputValue==="")
+  getPosts(setPosts)
+  else
+  setPosts(posts.filter((post)=>{
+    return post.question.question.toLowerCase().includes(inputValue.toLowerCase())
+  }))
+
+  }
   const handleQuestion =(e) => {
     e.preventDefault()
     
@@ -82,10 +94,14 @@ function Navbar()
           
       </div>
     </div>
-     <div className="qHeader_input">
+    <form onSubmit={searchHandler}>
+    <div className="qHeader_input">
        <SearchIcon/> 
-       <input type = "text" placeholder ="Search ColleZone" />
+       <input type = "text" placeholder ="Search ColleZone" value={inputValue} onChange={(e)=>setInputValue(e.target.value)} />
+       <button type="submit">search</button>
      </div>
+    </form>
+ 
      <div className = "qHeader_Rem">
        <div className = "qHeader_avatar">
          <Avatar onClick ={logouthandler}
